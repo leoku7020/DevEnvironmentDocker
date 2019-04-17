@@ -1,5 +1,5 @@
 # DevEnvironmentDocker
-include mysql mongodb / adminer / redis / phpredisAdmin / elasticsearch
+include mysql / mongodb / adminer / redis / phpredisAdmin / elasticsearch
 
 # Install Docker
  - Docker
