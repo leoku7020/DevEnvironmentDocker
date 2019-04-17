@@ -10,13 +10,13 @@ include mysql mongodb / adminer / redis / phpredisAdmin / elasticsearch
 
 # Change DB Auth
  - In docker-compose.yml
-   Mysql
-   environment:
-        MYSQL_ROOT_PASSWORD: whatyouwant
-   MongoDB
-   environment:
-        MONGO_INITDB_ROOT_USERNAME: root
-        MONGO_INITDB_ROOT_PASSWORD: whatyouwant
+   - Mysql
+   - environment:
+       - MYSQL_ROOT_PASSWORD: whatyouwant
+   - MongoDB
+   - environment:
+       -  MONGO_INITDB_ROOT_USERNAME: root
+       -  MONGO_INITDB_ROOT_PASSWORD: whatyouwant
 
 # Change Adminer Max Upload
  - Use uploads.ini to change
