@@ -1,0 +1,79 @@
+version: '2'
+services:
+  # mysql
+  mysql:
+     image: mariadb
+     container_name: mysql
+     ports:
+       - 3306:3306
+     environment:
+        MYSQL_ROOT_PASSWORD: 123456
+  # mongoDB
+  mongo:
+     image: mongo
+     container_name: mongoDB
+     ports:
+       - "27017:27017"
+     volumes_from:
+       - mongodata
+    #Use Auth Or Not
+     #environment:
+        #MONGO_INITDB_ROOT_USERNAME: root
+        #MONGO_INITDB_ROOT_PASSWORD: 123456
+  # mongoData
+  mongodata:
+     image: tianon/true
+     volumes:
+       - /data/db
+  # adminer
+  admin:
+     image: dockette/adminer:dg
+     container_name: adminer
+     ports:
+       - 9100:80
+     links: 
+       - mysql:mysql
+       - mongo:mongoDB
+     volumes:
+       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+  # redis
+  redis:
+     image: redis:4.0
+     container_name: redis
+     networks:
+       - net-redis
+     ports:
+       - "6379:6379"
+  # phpredisAdmin
+  phpredisadmin:
+     image: erikdubbelboer/phpredisadmin:latest
+     container_name: phpredisAdmin
+     ports:
+       - "8081:80"
+     networks:
+       - net-redis
+     environment:
+       - REDIS_1_HOST=redis
+       - REDIS_1_PORT=6379
+  # elasticsearch
+  elasticsearch:
+    image: elasticsearch:5.6.14-alpine
+    container_name: elasticsearch
+    environment:
+    - bootstrap.memory_lock=true
+    - discovery.type=single-node
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+    - 9200:9200
+    - 9300:9300
+    volumes:
+    - elasticsearch:/usr/share/elasticsearch/data
+    networks:
+    - net-elasticsearch
+    container_name: elasticsearch
+networks:
+  net-redis:
+  net-elasticsearch:
+volumes:
+  elasticsearch:
+
