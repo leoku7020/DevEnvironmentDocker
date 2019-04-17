@@ -22,9 +22,15 @@ include mysql mongodb / adminer / redis / phpredisAdmin / elasticsearch
  - Use uploads.ini to change
 
 # Use
- - Mysql         localhost:3306   root/123456 (default)
- - MongoDB       localhost:27017  none        (default)
- - Adminer       localhost:9100
- - Redis         localhost:6379
- - phpRedisAdmin localhost:8081
- - Elasticsearch localhost:9200 / localhost:9300
+ - Mysql         
+   - localhost:3306   root/123456 (default)
+ - MongoDB       
+   - localhost:27017  none        (default)
+ - Adminer       
+   - localhost:9100
+ - Redis         
+   - localhost:6379
+ - phpRedisAdmin 
+   - localhost:8081
+ - Elasticsearch 
+   - localhost:9200 / localhost:9300
