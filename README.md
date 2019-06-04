@@ -6,7 +6,7 @@ include mysql mongodb / adminer / redis / phpredisAdmin / elasticsearch
  - Docker-compose
 
 # To Up Container
- - docker-compose-up -d
+ - $ docker-compose up -d
 
 # Change DB Auth
  - In docker-compose.yml
