@@ -8,6 +8,8 @@ services:
        - 3306:3306
      environment:
         MYSQL_ROOT_PASSWORD: 123456
+     volumes:
+       - mysql_data:/var/lib/mysql
   # mongoDB
   mongo:
      image: mongo
@@ -76,4 +78,5 @@ networks:
   net-elasticsearch:
 volumes:
   elasticsearch:
+  mysql_data:
 
